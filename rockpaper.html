@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Rock Paper Scissors</title>
+      <link href="https://fonts.googleapis.com/css?family=New+Rocker&display=swap" rel="stylesheet">
+    <style>
+      h1 {
+        text-align: center;
+        font-family: 'New Rocker', cursive;
+        font-size: 5em;
+        color: white;
+      }
+
+      h2 {
+        font-family: 'New Rocker', cursive;
+        text-decoration: underline;
+        font-size: 3em;
+        color: red;
+      }
+
+      h3 {
+        font-family: 'New Rocker', cursive;
+        font-size: 2em;
+        color: white;
+      }
+
+      #you {
+        position: absolute;
+        top:0%;
+        left:7%;
+        }
+
+      #youresult {
+        position: absolute;
+        top:2%;
+        left:7%;
+        }
+
+      #computer {
+        position: absolute;
+        top:0%;
+        left:80%;
+        }
+      #computerresult {
+        position: absolute;
+        top:2%;
+        left:80%;
+        }
+
+      body {
+        background-image: url("/background.jpg");
+        background-size: cover;
+        
+      }
+
+      #rock {
+        background-color: red;
+        width: 320px;
+        height:300px;
+        margin-left: 9%;
+        margin-top: 8%;
+        position: fixed;
+        opacity:0;
+      }
+
+      #rock:hover {
+        
+        color:white;
+        border:5px solid black;
+        font-size: 2em;
+        opacity:.6;
+        border-radius: 2000px;
+        width: 120px;
+        height:100px;
+        margin-left: 16%;
+        margin-top: 15%;
+        position: fixed;
+      }
+
+      #paper {
+        background-color: red;
+        width: 320px;
+        height:300px;
+        margin-left: 39%;
+        margin-top: 8%;
+        position: fixed;
+        opacity:0;
+
+      }
+      #paper:hover {
+        color:white;
+        border:5px solid black;
+        font-size: 2em;
+        opacity:.6;
+        border-radius: 2000px;
+        width: 120px;
+        height:100px;
+        margin-left: 47%;
+        margin-top: 15%;
+        position: fixed;
+      }
+
+      #scissor {
+        background-color: red;
+        width: 320px;
+        height:300px;
+        margin-left: 70%;
+        margin-top: 8%;
+        position: fixed;
+        opacity:0;
+
+      }
+
+      #scissor:hover {
+        color:white;
+        border:5px solid black;
+        font-size: 2em;
+        opacity:.6;
+        border-radius: 2000px;
+        width: 120px;
+        height:100px;
+        margin-left: 77%;
+        margin-top: 15%;
+        position: fixed;
+      }
+    
+    </style>
+    
+    </head>
+    <body>
+      
+        <h1>Rock Paper Scissor</h1>
+
+        
+         <button id="rock" > Rock </button>
+         <button id="paper" > Paper </button>
+         <button id="scissor" > Scissor </button>
+
+         <h2 id="you">You</h2>
+         <h3 id="youResult">----</h3>
+         <h2 id="computer">Computer</h2>
+         <h3 id="computerResult">----</h3>
+
+        
+
+
+
+         <script>
+            window.onload = function() {
+            let userSelection = null;
+            let computerSelection = null;
+            let allSelections = ["Rock", "Paper", "Scissors"];
+            
+            
+            const rock = document.getElementById('rock')
+            rock.addEventListener('click', function(clickevent) {
+            userSelection = rock.innerHTML;
+            computerSelection = allSelections[Math.floor(Math.random()*allSelections.length)];
+            console.log(userSelection)
+            console.log(computerSelection)
+            })
+      
+            const paper = document.getElementById('paper')
+            paper.addEventListener('click', function(clickSelect) {
+            userSelection = paper.innerHTML;
+            computerSelection = allSelections[Math.floor(Math.random()*allSelections.length)];
+            console.log(userSelection)
+            console.log(computerSelection)
+            })
+      
+            const scissor = document.getElementById('scissor')
+            scissor.addEventListener('click', function(clickSelect) {
+            userSelection = scissor.innerHTML;
+            computerSelection = allSelections[Math.floor(Math.random()*allSelections.length)];
+            console.log(userSelection)
+            console.log(computerSelection)
+            })
+              
+            
+      
+            
+            
+
+            
+            }
+          </script>  
+        
+    </body>
+</html>
