@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    
+  <head>
       <title>Rock Paper Scissors</title>
       <link href="https://fonts.googleapis.com/css?family=New+Rocker&display=swap" rel="stylesheet">
+    
     <style>
+      
       h1 {
         text-align: center;
         font-family: 'New Rocker', cursive;
@@ -15,13 +18,8 @@
         font-family: 'New Rocker', cursive;
         text-decoration: underline;
         font-size: 3em;
+        text-align: center;
         color: red;
-      }
-
-      h3 {
-        font-family: 'New Rocker', cursive;
-        font-size: 2em;
-        color: white;
       }
 
       #you {
@@ -30,30 +28,19 @@
         left:7%;
         }
 
-      #youresult {
-        position: absolute;
-        top:2%;
-        left:7%;
-        }
-
       #computer {
         position: absolute;
         top:0%;
         left:80%;
         }
-      #computerresult {
-        position: absolute;
-        top:2%;
-        left:80%;
-        }
-
+      
       body {
         background-image: url("/background.jpg");
-        background-size: cover;
-        
+        background-size: cover; 
       }
 
       #rock {
+        font-family: 'New Rocker', cursive;
         background-color: red;
         width: 320px;
         height:300px;
@@ -64,7 +51,6 @@
       }
 
       #rock:hover {
-        
         color:white;
         border:5px solid black;
         font-size: 2em;
@@ -78,6 +64,7 @@
       }
 
       #paper {
+        font-family: 'New Rocker', cursive;
         background-color: red;
         width: 320px;
         height:300px;
@@ -87,6 +74,7 @@
         opacity:0;
 
       }
+      
       #paper:hover {
         color:white;
         border:5px solid black;
@@ -101,6 +89,7 @@
       }
 
       #scissor {
+        font-family: 'New Rocker', cursive;
         background-color: red;
         width: 320px;
         height:300px;
@@ -123,67 +112,141 @@
         margin-top: 15%;
         position: fixed;
       }
-    
+
+      #countdown {
+        color: red;
+        text-align: center;
+        font-size: 20em;
+        line-height: .6em;  
+      } 
     </style>
     
-    </head>
+  </head>
+    
     <body>
       
         <h1>Rock Paper Scissor</h1>
+       
+         <button id="rock" >Rock</button>
+         <button id="paper" >Paper</button>
+         <button id="scissor" >Scissor</button>
 
-        
-         <button id="rock" > Rock </button>
-         <button id="paper" > Paper </button>
-         <button id="scissor" > Scissor </button>
-
-         <h2 id="you">You</h2>
-         <h3 id="youResult">----</h3>
-         <h2 id="computer">Computer</h2>
-         <h3 id="computerResult">----</h3>
-
-        
-
-
-
+         <h2 id="you">You<br/></h2>
+         <h2 id="computer">Computer<br/></h2>
+         
+         <div id="countdown"></div>
+         
          <script>
             window.onload = function() {
+             
+            let youResult = "";
+            let computerResult = null;
             let userSelection = null;
             let computerSelection = null;
-            let allSelections = ["Rock", "Paper", "Scissors"];
+            let allSelections = ["Rock", "Paper", "Scissor"];
+            let finalResult = document.getElementById('countdown').innerHTML
             
             
             const rock = document.getElementById('rock')
             rock.addEventListener('click', function(clickevent) {
-            userSelection = rock.innerHTML;
-            computerSelection = allSelections[Math.floor(Math.random()*allSelections.length)];
-            console.log(userSelection)
-            console.log(computerSelection)
+            
+            var timeleft = 3;
+            var downloadTimer = setInterval(function(){
+              document.getElementById("countdown").innerHTML = timeleft
+              timeleft -= 1;
+              
+              if(timeleft <= -1){
+                  clearInterval(downloadTimer);
+                  userSelection = rock.innerHTML;
+                  computerSelection = allSelections[Math.floor(Math.random()*allSelections.length)];
+                  document.getElementById('you').innerHTML = "You<br/>" + userSelection;
+                  document.getElementById('computer').innerHTML = "Computer<br/>" + computerSelection;
+                  
+                  console.log("User: " + userSelection)
+                  console.log("Computer: " + computerSelection)
+                    
+                    if(computerSelection == "Rock"){
+                      document.getElementById("countdown").innerHTML = "tie"
+                    }
+                    
+                    else if(computerSelection == "Paper"){
+                      document.getElementById("countdown").innerHTML = "lose"
+                    }
+                    
+                    else if(computerSelection == "Scissor"){
+                      document.getElementById("countdown").innerHTML = "win"
+                      
+                    }
+                }  
+                }, 1000);
             })
       
             const paper = document.getElementById('paper')
             paper.addEventListener('click', function(clickSelect) {
-            userSelection = paper.innerHTML;
-            computerSelection = allSelections[Math.floor(Math.random()*allSelections.length)];
-            console.log(userSelection)
-            console.log(computerSelection)
+              
+              var timeleft = 3;
+              var downloadTimer = setInterval(function(){
+                document.getElementById("countdown").innerHTML = timeleft
+                timeleft -= 1;
+                
+                if(timeleft <= -1){
+                  clearInterval(downloadTimer);
+                  userSelection = paper.innerHTML;
+                  computerSelection = allSelections[Math.floor(Math.random()*allSelections.length)];
+                  document.getElementById('you').innerHTML = "You<br/>" + userSelection;
+                  document.getElementById('computer').innerHTML = "Computer<br/>" + computerSelection;
+                  
+                  console.log("User: " + userSelection)
+                  console.log("Computer: " + computerSelection)
+                    
+                    if(computerSelection == "Paper"){
+                      document.getElementById("countdown").innerHTML = "tie"
+                    }
+                    
+                    else if(computerSelection == "Scissor"){
+                      document.getElementById("countdown").innerHTML = "lose"
+                    }
+                    
+                    else if(computerSelection == "Rock"){
+                      document.getElementById("countdown").innerHTML = "win"
+                    }
+                }  
+                }, 1000);
             })
       
             const scissor = document.getElementById('scissor')
             scissor.addEventListener('click', function(clickSelect) {
-            userSelection = scissor.innerHTML;
-            computerSelection = allSelections[Math.floor(Math.random()*allSelections.length)];
-            console.log(userSelection)
-            console.log(computerSelection)
+            
+            var timeleft = 3;
+            var downloadTimer = setInterval(function(){
+               document.getElementById("countdown").innerHTML = timeleft
+                timeleft -= 1;
+                
+                if(timeleft <= -1){
+                  clearInterval(downloadTimer);
+                  userSelection = scissor.innerHTML;
+                  computerSelection = allSelections[Math.floor(Math.random()*allSelections.length)];
+                  document.getElementById('you').innerHTML = "You<br/>" + userSelection;
+                  document.getElementById('computer').innerHTML = "Computer<br/>" + computerSelection;
+                  
+                  console.log("User: " + userSelection)
+                  console.log("Computer: " + computerSelection)
+                    
+                    if(computerSelection == "Scissor"){
+                      document.getElementById("countdown").innerHTML = "tie"
+                    }
+                    
+                    else if(computerSelection == "Rock"){
+                      document.getElementById("countdown").innerHTML = "lose"
+                    }
+                    
+                    else if(computerSelection == "Paper"){
+                      document.getElementById("countdown").innerHTML = "win"
+                    }
+                }  
+                }, 1000);
             })
-              
-            
-      
-            
-            
-
-            
             }
-          </script>  
-        
+          </script>     
     </body>
 </html>
